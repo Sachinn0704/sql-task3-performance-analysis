@@ -11,7 +11,6 @@ The goal is to extract deeper insights using:
 * HAVING
 * Subqueries
 
----
 
 ## 🎯 Objectives
 
@@ -21,18 +20,13 @@ The goal is to extract deeper insights using:
 * Determine the overall topper
 * Find students enrolled in multiple courses
 
----
-
 ## 🗂️ Repository Structure
 
-```
 sql-advanced-analysis-task3/
 │
 ├── task3.sql
 └── README.md
-```
 
----
 
 ## 🗄️ Database Overview
 
@@ -42,15 +36,12 @@ This project uses the following tables:
 * **courses** → Stores course information
 * **enrollments** → Links students with courses and stores grades
 
----
-
 ## 🔗 Relationships
 
 * One student → Multiple courses
 * One course → Multiple students
 * Many-to-many relationship handled using `enrollments`
 
----
 
 ## 📊 SQL Queries & Analysis
 
@@ -66,7 +57,6 @@ JOIN courses c ON e.course_id = c.id
 GROUP BY c.name;
 ```
 
----
 
 ### 2️⃣ Pass Rate per Course
 
@@ -95,7 +85,7 @@ ORDER BY avg_grade DESC
 LIMIT 1;
 ```
 
----
+
 
 ### 4️⃣ Students Enrolled in Multiple Courses
 
@@ -108,7 +98,7 @@ GROUP BY student_id
 HAVING COUNT(course_id) > 1;
 ```
 
----
+
 
 ## 🚀 How to Run
 
@@ -125,7 +115,6 @@ HAVING COUNT(course_id) > 1;
 4. Execute queries
 5. Analyze results
 
----
 
 ## 📈 Key Insights
 
@@ -134,7 +123,6 @@ HAVING COUNT(course_id) > 1;
 * Helps detect multi-course enrollment patterns
 * Useful for academic performance tracking
 
----
 
 ## 🎓 Learning Outcomes
 
@@ -143,7 +131,6 @@ HAVING COUNT(course_id) > 1;
 * Applying conditional aggregation
 * Performing real-world data analysis
 
----
 
 ## 🧠 Skills Demonstrated
 
