@@ -1,143 +1,69 @@
-# 📊 SQL Advanced Student Performance Analysis (Task 3)
+# Advanced SQL Student Performance Analysis
 
-## 📌 Project Overview
+An advanced SQL analysis project that builds on a student-course-enrollment database to answer deeper academic performance questions.
 
-This project is a continuation of the SQL Data Analysis Internship. After building the database with **students, courses, and enrollments**, this task focuses on performing **advanced SQL analysis**.
+## Project Summary
 
-The goal is to extract deeper insights using:
+The project uses joins, grouping, conditional aggregation, and filtering to identify top students, calculate course pass rates, find the overall topper, and detect students enrolled in multiple courses.
 
-* JOINs
-* GROUP BY
-* HAVING
-* Subqueries
+## Database Model
 
+- `students` — student information
+- `courses` — course information
+- `enrollments` — student-course relationships and grades
 
-## 🎯 Objectives
+The enrollment table represents the many-to-many relationship between students and courses.
 
-* Analyze student performance using advanced SQL queries
-* Identify top-performing students per course
-* Calculate pass rates across courses
-* Determine the overall topper
-* Find students enrolled in multiple courses
+## Main Analysis
 
-## 🗂️ Repository Structure
+### 1. Top student per course
 
-sql-advanced-analysis-task3/
-│
+Identifies the highest recorded grade in each course.
+
+### 2. Pass rate per course
+
+Calculates the percentage of enrollment records with a grade of at least 40.
+
+### 3. Overall topper
+
+Ranks students using their average grade across enrolled courses.
+
+### 4. Multiple-course enrollment
+
+Finds students enrolled in more than one course.
+
+## SQL Techniques
+
+- JOIN
+- GROUP BY
+- HAVING
+- ORDER BY
+- Aggregate functions
+- CASE expressions
+- Subqueries
+- Conditional aggregation
+
+## How to Run
+
+1. Open MySQL, PostgreSQL, SQLite, or another compatible SQL environment.
+2. Ensure the `students`, `courses`, and `enrollments` tables exist.
+3. Run `task3.sql`.
+4. Execute the analysis queries.
+5. Review the results and compare course/student performance.
+
+## Repository Structure
+
+```text
+.
 ├── task3.sql
 └── README.md
-
-
-## 🗄️ Database Overview
-
-This project uses the following tables:
-
-* **students** → Stores student details
-* **courses** → Stores course information
-* **enrollments** → Links students with courses and stores grades
-
-## 🔗 Relationships
-
-* One student → Multiple courses
-* One course → Multiple students
-* Many-to-many relationship handled using `enrollments`
-
-
-## 📊 SQL Queries & Analysis
-
-### 1️⃣ Top Student per Course
-
-Finds the highest-scoring student in each course.
-
-```sql
-SELECT c.name AS course, s.name AS student, MAX(e.grade) AS top_grade
-FROM enrollments e
-JOIN students s ON e.student_id = s.id
-JOIN courses c ON e.course_id = c.id
-GROUP BY c.name;
 ```
 
+## Skills Demonstrated
 
-### 2️⃣ Pass Rate per Course
-
-Calculates percentage of students scoring **≥ 40**.
-
-```sql
-SELECT c.name,
-SUM(CASE WHEN e.grade >= 40 THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS pass_rate
-FROM enrollments e
-JOIN courses c ON e.course_id = c.id
-GROUP BY c.name;
-```
-
----
-
-### 3️⃣ Overall Topper
-
-Finds the best student across all courses.
-
-```sql
-SELECT s.name, AVG(e.grade) AS avg_grade
-FROM enrollments e
-JOIN students s ON e.student_id = s.id
-GROUP BY s.name
-ORDER BY avg_grade DESC
-LIMIT 1;
-```
-
-
-
-### 4️⃣ Students Enrolled in Multiple Courses
-
-Identifies students taking more than one course.
-
-```sql
-SELECT student_id, COUNT(course_id) AS total_courses
-FROM enrollments
-GROUP BY student_id
-HAVING COUNT(course_id) > 1;
-```
-
-
-
-## 🚀 How to Run
-
-### Requirements
-
-* MySQL / PostgreSQL / SQLite
-* SQL Editor (VS Code / DB Fiddle / SQLite Online)
-
-### Steps
-
-1. Open your SQL environment
-2. Ensure database with required tables exists
-3. Run `task3.sql`
-4. Execute queries
-5. Analyze results
-
-
-## 📈 Key Insights
-
-* Identifies top-performing students per course
-* Calculates pass percentage for performance evaluation
-* Helps detect multi-course enrollment patterns
-* Useful for academic performance tracking
-
-
-## 🎓 Learning Outcomes
-
-* Writing advanced SQL queries
-* Using JOIN + GROUP BY + HAVING
-* Applying conditional aggregation
-* Performing real-world data analysis
-
-
-## 🧠 Skills Demonstrated
-
-* SQL (Advanced)
-* Data Analysis
-* Query Optimization
-* Problem Solving
-
-
-
+- Advanced SQL querying
+- Relational data analysis
+- Performance ranking
+- Conditional aggregation
+- Data interpretation
+- Problem solving with SQL
