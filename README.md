@@ -1,6 +1,6 @@
 # Advanced SQL Student Performance Analysis
 
-**Task 3 — Updated September 8, 2026**
+**Task 3 — Updated September 14, 2026**
 
 An advanced SQL practice project built around a student-course-enrollment database. The project demonstrates practical SQL filtering, aggregation, joins, conditional logic, subqueries, CTEs, and window functions for portfolio-style performance analysis.
 
@@ -49,7 +49,7 @@ HAVING AVG(grade) >= 80;
 
 ### CTEs and Window Functions
 
-The new `advanced_analytics.sql` file extends the project with analytical SQL patterns:
+The `advanced_analytics.sql` file extends the project with analytical SQL patterns:
 
 - `WITH` common table expressions for readable multi-step analysis
 - `RANK()` for overall student rankings
@@ -110,10 +110,11 @@ Adds a second analytical layer using CTEs and window functions. Run it after `ta
 
 ## How to Run
 
-1. Open MySQL, PostgreSQL, SQLite, or another compatible SQL environment.
+1. Open a SQL environment that supports the syntax used by the scripts.
 2. Run `task3.sql` first to create the tables and sample data.
 3. Run `advanced_analytics.sql` to execute the advanced analytical queries.
 4. Review each result and compare the window-function output with the grouped results from Task 3.
+5. For a portfolio review, focus on how ranking, benchmarking, running averages, and quartile segmentation could feed a reporting dashboard.
 
 > SQL syntax can vary between database systems. The core concepts are portable, while functions such as `LIMIT` may require an equivalent such as `TOP` or `FETCH FIRST` in some systems.
 
@@ -129,6 +130,12 @@ Adds a second analytical layer using CTEs and window functions. Run it after `ta
 - Portfolio-oriented analytical problem solving
 
 ## Update Log
+
+### September 14, 2026
+
+- Clarified the execution workflow for the foundational and advanced SQL layers.
+- Documented how the analytical outputs can support reporting and dashboard workflows.
+- Updated the project description to reflect the current analytical scope.
 
 ### September 8, 2026
 
