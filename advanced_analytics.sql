@@ -122,3 +122,24 @@ SELECT
     NTILE(4) OVER (ORDER BY average_grade DESC) AS performance_quartile
 FROM student_scores
 ORDER BY performance_quartile, average_grade DESC;
+
+-- ============================================================
+-- 6. CREDIT-WEIGHTED STUDENT PERFORMANCE
+-- Courses can carry different credit values, so a weighted average
+-- can better represent overall academic performance than a simple
+-- mean when credits differ.
+-- ============================================================
+
+SELECT
+    s.student_id,
+    s.student_name,
+    ROUND(
+        SUM(e.grade * c.credits) / NULLIF(SUM(c.credits), 0),
+        2
+    ) AS credit_weighted_average,
+    SUM(c.credits) AS total_credits
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN courses c ON e.course_id = c.course_id
+GROUP BY s.student_id, s.student_name
+ORDER BY credit_weighted_average DESC, s.student_name;
